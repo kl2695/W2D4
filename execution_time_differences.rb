@@ -29,7 +29,6 @@ end
 
 def largest_contiguous_subsum(list)
   sum = 0
-  # find each sub array
   list.each_index do |i|
     j = i
     sub_arr = []
@@ -40,4 +39,17 @@ def largest_contiguous_subsum(list)
     sum = sub_arr.reduce(:+) if sub_arr.reduce(:+) > sum
   end
   sum
+end
+
+def better_subsum(list)
+  i = 0
+  r_pos = 0
+  max_sum = list.first
+  while i < list.length
+    r_pos += list[i]
+    r_pos = 0 if r_pos < 0
+    max_sum = r_pos if r_pos > max_sum
+    i += 1
+  end
+  max_sum
 end
