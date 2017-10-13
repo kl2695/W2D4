@@ -24,7 +24,7 @@ def ok_two_sum?(arr, target)
     temp = arr
     temp.delete(el)
 
-    return true if binary_search(temp.sort,target - el)
+    return true if binary_search(temp,target - el)
   end
 
   return false
@@ -49,19 +49,15 @@ def binary_search(an_array, item)
     end
 end
 
-
 def two_sum?(arr, target)
 
   hash = Hash.new(0)
 
-  arr.each do |el|
-    hash[el] += 1
-  end
 
   arr.each do |el|
-    temp = hash.keys
+    temp = hash
     temp.delete(el)
-    return true if temp.include?(target-el)
+    return true if temp[target-el]
   end
 
   false
